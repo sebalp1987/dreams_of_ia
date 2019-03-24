@@ -7,6 +7,7 @@ from pygame.locals import *
 
 def main():
     pygame.init()
+    pygame.mixer.init()
     clock = pygame.time.Clock()
     screen = pygame.display.set_mode((STRING.Maps.MAPWITH*STRING.Maps.TILESIZE,
                                            STRING.Maps.MAPHEIGHT*STRING.Maps.TILESIZE))

@@ -25,7 +25,7 @@ class InputBox:
             if self.active:
                 if event.key == pg.K_RETURN:
                     print(self.text)
-                    self.text = ''
+                    return self.text
                 elif event.key == pg.K_BACKSPACE:
                     self.text = self.text[:-1]
                 else:
