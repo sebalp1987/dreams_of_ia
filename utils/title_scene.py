@@ -35,7 +35,8 @@ class TitleScene(object):
         self.all_sprites.draw(screen)
 
     def update(self):
-        self.anim.update(60)
+        self.anim.time_interval = 2
+        self.anim.update(1)
         self.all_sprites.update()
         pygame.display.update()
 

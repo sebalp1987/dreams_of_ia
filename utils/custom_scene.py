@@ -22,14 +22,15 @@ class CustomScene(object):
         for img in self.img_names:
             self.images.append(pygame.image.load(STRING.Images.PATH + img))
         if len(self.images) > 1:
-                self.anim = animation.Animation(self.images, 0.25)
+            self.anim = animation.Animation(self.images, 0.25)
         else:
             self.anim = self.images[0]
 
         # Music
         dict_music = STRING.Sounds.SOUND_DICT
-        pygame.mixer.music.load(STRING.Sounds.PATH + dict_music.get(self.scene))
-        pygame.mixer.music.play(-1, 0)
+        if dict_music.get(self.scene) is not None:
+            pygame.mixer.music.load(STRING.Sounds.PATH + dict_music.get(self.scene))
+            pygame.mixer.music.play(-1, 0)
 
         # Input Box
         self.input_boxes = [input_box.InputBox(0,
@@ -50,10 +51,10 @@ class CustomScene(object):
         # Background Image
         if len(self.images) == 1:
             image = pygame.transform.scale(self.anim, (STRING.Maps.MAPWITH * STRING.Maps.TILESIZE,
-                                                             STRING.Maps.MAPHEIGHT * STRING.Maps.TILESIZE))
+                                                       STRING.Maps.MAPHEIGHT * STRING.Maps.TILESIZE))
         else:
             image = pygame.transform.scale(self.anim.image, (STRING.Maps.MAPWITH * STRING.Maps.TILESIZE,
-                                                         STRING.Maps.MAPHEIGHT * STRING.Maps.TILESIZE))
+                                                             STRING.Maps.MAPHEIGHT * STRING.Maps.TILESIZE))
 
         screen.blit(image, (int(STRING.Maps.MAPWITH * STRING.Maps.TILESIZE / 2), 0))
 
@@ -64,7 +65,8 @@ class CustomScene(object):
                                                        STRING.Maps.MAPHEIGHT * STRING.Maps.TILESIZE / 5))
 
         # Text Down
-        textsurface = self.font.render(DIALOG.DICT_TEXT_DOWN.get(self.scene), False, STRING.Colors.MONO)
+        textsurface = self.font.render(DIALOG.DICT_TEXT_DOWN.get(self.scene).format(self.text), False,
+                                       STRING.Colors.MONO)
         screen.blit(textsurface, (0, STRING.Maps.MAPHEIGHT * STRING.Maps.TILESIZE * 8 / 10))
 
         # Text Left
@@ -75,7 +77,8 @@ class CustomScene(object):
             box.draw(screen)
 
     def update(self):
-        self.anim.update(60)
+        self.anim.time_interval = 5
+        self.anim.update(1)
         self.all_sprites.update()
         pygame.display.update()
 

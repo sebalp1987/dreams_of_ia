@@ -33,4 +33,4 @@ class Images:
 class Sounds:
     BACKGROUND = LOCAL + '/resource/sound/background.mp3'
     PATH = LOCAL + '/resource/sound/'
-    SOUND_DICT = {0: 'background.mp3'}
+    SOUND_DICT = {0: None}

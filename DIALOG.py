@@ -37,6 +37,6 @@ Supercomputadora AI-3000"""
 }
 
 DICT_TEXT_DOWN = {
-    0: """¿Estás listo?"""
+    0: """¿Estás listo {}?"""
 
 }
