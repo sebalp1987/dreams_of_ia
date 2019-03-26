@@ -2,7 +2,7 @@ import pygame
 import sys
 import STRING
 
-from utils import input_box, scene_manager
+from utils import scene_manager
 from pygame.locals import *
 
 def main():

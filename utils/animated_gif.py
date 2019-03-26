@@ -6,7 +6,7 @@ def extractFrames(inGif, outFolder):
     frame = Image.open(inGif)
     nframes = 0
     while frame:
-        frame.save('%s/%s-%s.gif' % (outFolder, os.path.basename(inGif), nframes), 'GIF')
+        frame.save('%s/%s-%s' % (outFolder, nframes, os.path.basename(inGif)), 'GIF')
         nframes += 1
         try:
             frame.seek(nframes)
@@ -15,4 +15,4 @@ def extractFrames(inGif, outFolder):
     return True
 
 
-extractFrames(STRING.Images.CITY, STRING.LOCAL + '/resource/image')
+extractFrames(STRING.Images.CITY, STRING.LOCAL + '/resource/image/')

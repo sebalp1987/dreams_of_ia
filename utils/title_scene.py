@@ -1,5 +1,5 @@
 import pygame
-from utils import game_scene, input_box, animation, board, cursor
+from utils import game_scene, animation, board, cursor
 import STRING
 import DIALOG
 from os import listdir
@@ -11,6 +11,8 @@ class TitleScene(object):
         super(TitleScene, self).__init__()
         self.font = pygame.font.SysFont("monospace", 18)
         self.img_names = [f for f in listdir(STRING.Images.PATH) if f.startswith('main.gif-')]
+        self.img_names.sort(key=lambda x: int(x[-6:-4]) if x[-6].isdigit() else int(x[-5:-4]))
+
         self.images = []
         for img in self.img_names:
             self.images.append(pygame.image.load(STRING.Images.PATH + img))

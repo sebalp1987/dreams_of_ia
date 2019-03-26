@@ -7,6 +7,9 @@ class GameParams:
 
     name = 'Dreams of IA'
     FPS = 60
+    INPUT_BOX = 0
+    MENU = 3
+    DICT_SCENES = {0: MENU}
 
 class Colors:
     BLACK = (0, 0, 0)
@@ -28,7 +31,7 @@ class Images:
     COVER = LOCAL + '/resource/image/cover.jpg'
     MAIN = LOCAL + '/resource/image/main.gif'
     CITY = LOCAL + '/resource/image/city.gif'
-    IMG_DICT = {0: 'city'}
+    IMG_DICT = {0: 'city.gif'}
 
 class Sounds:
     BACKGROUND = LOCAL + '/resource/sound/background.mp3'
