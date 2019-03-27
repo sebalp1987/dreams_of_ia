@@ -22,8 +22,8 @@ class Colors:
 
 class Maps:
     TILESIZE = 100
-    MAPWITH = 7
-    MAPHEIGHT = 5
+    MAPWITH = 9
+    MAPHEIGHT = 7
 
 
 class Images:

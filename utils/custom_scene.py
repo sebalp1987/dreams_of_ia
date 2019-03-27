@@ -42,16 +42,21 @@ class CustomScene(object):
 
         # Input Box
         if STRING.GameParams.DICT_SCENES.get(self.scene) != STRING.GameParams.INPUT_BOX:
-            self.number = 0
-            for btn in range(1, STRING.GameParams.MENU + 1, 1):
-                self.button = button_check.Button(320, 70, 170, 65, self.return_value,
-                              self.font, 'Increment', (255, 255, 255))
-            self.all_sprites.add(self.button)
+            number = 0
+            self.press_button = 0
+            for btn in range(1, len(DIALOG.DICT_BUTTON.get(self.scene)) + 1, 1):
+                button = button_check.Button(0 + number,
+                                             STRING.Maps.MAPHEIGHT * STRING.Maps.TILESIZE * 9 / 10,
+                                             225, 50,
+                                             font=pygame.font.SysFont("monospace", 16),
+                                             text=DIALOG.DICT_BUTTON.get(self.scene)[btn - 1],
+                                             text_color=(255, 255, 255))
+                number += 300
+                self.all_sprites.add(button)
 
         elif STRING.GameParams.DICT_SCENES.get(self.scene) == STRING.GameParams.INPUT_BOX:
             self.input_boxes = [input_box.InputBox(0,
                                                    STRING.Maps.MAPHEIGHT * STRING.Maps.TILESIZE * 9 / 10, 140, 32)]
-
 
     def render(self, screen):
         # Black Fill
@@ -94,20 +99,22 @@ class CustomScene(object):
 
     def handle_events(self, e):
         text = None
+
         if STRING.GameParams.DICT_SCENES.get(self.scene) == STRING.GameParams.INPUT_BOX:
             for box in self.input_boxes:
                 text = box.handle_event(e)
         elif STRING.GameParams.DICT_SCENES.get(self.scene) == STRING.GameParams.MENU:
             for btn in self.all_sprites:
                 if type(btn) is button_check.Button:
-                    btn.handle_event(e)
+                    btn.handle_event_button(e)
 
         if e.type == pygame.KEYDOWN and e.key == pygame.K_RETURN and text is not None:
             self.manager.go_to(CustomScene(scene=self.scene + 1, text=text))
 
         if e.type == pygame.KEYDOWN and e.key == pygame.K_ESCAPE:
             self.manager.go_to(scene=self.scene - 1)
-
+    '''
     def return_value(self):
         self.number += 1
         print(self.number)
+    '''

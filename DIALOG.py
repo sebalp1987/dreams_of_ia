@@ -40,3 +40,7 @@ DICT_TEXT_DOWN = {
     0: """¿Estás listo {}?"""
 
 }
+
+DICT_BUTTON = { 0: ['Ir a la Ciudad', 'Dirigirse al Campo', 'Preguntar Direcciones']
+
+}

@@ -10,7 +10,7 @@ IMAGE_DOWN.fill(pg.Color('aquamarine1'))
 
 class Button(pg.sprite.Sprite):
 
-    def __init__(self, x, y, width, height, callback,
+    def __init__(self, x, y, width, height,
                  font, text='', text_color=(0, 0, 0),
                  image_normal=IMAGE_NORMAL, image_hover=IMAGE_HOVER,
                  image_down=IMAGE_DOWN):
@@ -19,6 +19,7 @@ class Button(pg.sprite.Sprite):
         self.image_normal = pg.transform.scale(image_normal, (width, height))
         self.image_hover = pg.transform.scale(image_hover, (width, height))
         self.image_down = pg.transform.scale(image_down, (width, height))
+        self.text = text
 
         self.image = self.image_normal  # The currently active image.
         self.rect = self.image.get_rect(topleft=(x, y))
@@ -31,9 +32,15 @@ class Button(pg.sprite.Sprite):
             image.blit(text_surf, text_rect)
 
         # This function will be called when the button gets pressed.
-        self.callback = callback
+        # self.callback = callback
         self.button_down = False
 
+    def handle_event_button(self, event):
+        if event.type == pg.MOUSEBUTTONDOWN:
+            print('HOLAAAA')
+            print(self.text)
+            return self.text
+    ''''
     def handle_event(self, event):
         if event.type == pg.MOUSEBUTTONDOWN:
             if self.rect.collidepoint(event.pos):
@@ -51,3 +58,4 @@ class Button(pg.sprite.Sprite):
                 self.image = self.image_hover
             elif not collided:
                 self.image = self.image_normal
+    '''
