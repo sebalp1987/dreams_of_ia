@@ -15,4 +15,4 @@ def extractFrames(inGif, outFolder):
     return True
 
 
-extractFrames(STRING.Images.CITY, STRING.LOCAL + '/resource/image/')
+extractFrames(STRING.Images.PATH + 'ai3000.gif', STRING.LOCAL + '/resource/image/gif/')

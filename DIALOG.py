@@ -33,14 +33,32 @@ GAME_SCENE_1 = """¿Cuál es tu nombre?"""
 DICT_TEXT = {
     0: """Bienvienido a Ethernium, la ciudad
 controlada por la 
-Supercomputadora AI-3000"""
+Supercomputadora AI-3000""",
+
+    '01-Preguntar Direcciones': """Te encuentras un androide que está
+    probando sus circuitos. Te observa
+    extraña por tu forma humana, casi con asco
+    y Te pregunta...""",
+        '01-Preguntar Direcciones1-AI-3000': """AI-3000 todo lo ve...""",
+        '01-Preguntar Direcciones2-Robots': """¿Robots? Somos androides...""",
+        '01-Preguntar Direcciones3-Humanos': """¿Humanos?"""
 }
 
 DICT_TEXT_DOWN = {
-    0: """¿Estás listo {}?"""
+    0: """¿Estás listo {}?""",
 
+    '01-Preguntar Direcciones': """¿En qué puedo ayudarte?""",
+        '01-Preguntar Direcciones1-AI-3000': """¿Quieres saber más?""",
+        '01-Preguntar Direcciones2-Robots': """¿Quieres saber más?""",
+        '01-Preguntar Direcciones3-Humanos': """¿Quieres saber más?"""
 }
 
-DICT_BUTTON = { 0: ['Ir a la Ciudad', 'Dirigirse al Campo', 'Preguntar Direcciones']
+DICT_BUTTON = {0: ['Preguntar Direcciones', 'Dirigirse al Campo', 'Ir a la Ciudad'],
+
+                '01-Preguntar Direcciones': ['AI-3000', 'Robots', 'Humanos'],
+                '01-Preguntar Direcciones1-AI-3000': ['Sí', 'No'],
+                '01-Preguntar Direcciones2-Robots': ['Sí', 'No'],
+                '01-Preguntar Direcciones3-Humanos': ['Sí', 'No']
+
 
 }

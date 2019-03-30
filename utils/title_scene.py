@@ -10,12 +10,12 @@ class TitleScene(object):
     def __init__(self):
         super(TitleScene, self).__init__()
         self.font = pygame.font.SysFont("monospace", 18)
-        self.img_names = [f for f in listdir(STRING.Images.PATH) if f.startswith('main.gif-')]
+        self.img_names = [f for f in listdir(STRING.Images.PATH_GIF) if f.startswith('main.gif-')]
         self.img_names.sort(key=lambda x: int(x[-6:-4]) if x[-6].isdigit() else int(x[-5:-4]))
 
         self.images = []
         for img in self.img_names:
-            self.images.append(pygame.image.load(STRING.Images.PATH + img))
+            self.images.append(pygame.image.load(STRING.Images.PATH_GIF + img))
         self.anim = animation.Animation(self.images, 0.25)
         self.all_sprites = pygame.sprite.Group()
         pygame.mixer.music.load(STRING.Sounds.BACKGROUND)

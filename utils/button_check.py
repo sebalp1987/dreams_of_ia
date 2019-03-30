@@ -10,12 +10,13 @@ IMAGE_DOWN.fill(pg.Color('aquamarine1'))
 
 class Button(pg.sprite.Sprite):
 
-    def __init__(self, x, y, width, height,
-                 font, text='', text_color=(0, 0, 0),
+    def __init__(self, id, x, y, width, height,
+                 font, callback, text='', text_color=(0, 0, 0),
                  image_normal=IMAGE_NORMAL, image_hover=IMAGE_HOVER,
                  image_down=IMAGE_DOWN):
         super().__init__()
         # Scale the images to the desired size (doesn't modify the originals).
+        self.id = id
         self.image_normal = pg.transform.scale(image_normal, (width, height))
         self.image_hover = pg.transform.scale(image_hover, (width, height))
         self.image_down = pg.transform.scale(image_down, (width, height))
@@ -32,14 +33,13 @@ class Button(pg.sprite.Sprite):
             image.blit(text_surf, text_rect)
 
         # This function will be called when the button gets pressed.
-        # self.callback = callback
+        self.callback = callback
         self.button_down = False
 
     def handle_event_button(self, event):
         if event.type == pg.MOUSEBUTTONDOWN:
-            print('HOLAAAA')
-            print(self.text)
-            return self.text
+            self.callback()
+
     ''''
     def handle_event(self, event):
         if event.type == pg.MOUSEBUTTONDOWN:
